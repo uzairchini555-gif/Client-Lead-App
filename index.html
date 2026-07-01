@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Lead Collection</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Client Lead Collection</h1>
+    <p class="subtitle">Fill in the client details below</p>
+
+    <form id="leadForm">
+
+        <label>Shop Name</label>
+        <input
+            type="text"
+            id="shopName"
+            placeholder="Enter shop name"
+            required>
+
+        <label>Client Name</label>
+        <input
+            type="text"
+            id="clientName"
+            placeholder="Enter client name"
+            required>
+
+        <label>Contact Number</label>
+        <input
+            type="tel"
+            id="contact"
+            placeholder="03XXXXXXXXX"
+            required>
+
+        <label>Email</label>
+        <input
+            type="email"
+            id="email"
+            placeholder="example@email.com"
+            required>
+
+        <label>Pin Location</label>
+
+        <button type="button" id="locationBtn">
+            📍 Get Current Location
+        </button>
+
+        <p id="locationStatus">
+            Location not captured
+        </p>
+
+        <button type="submit" id="submitBtn">
+            Submit Client
+        </button>
+
+    </form>
+
+</div>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
