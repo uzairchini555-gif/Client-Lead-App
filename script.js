@@ -1,19 +1,62 @@
 const locationBtn = document.getElementById("locationBtn");
 const locationStatus = document.getElementById("locationStatus");
 const leadForm = document.getElementById("leadForm");
+const submitBtn = document.getElementById("submitBtn");
+const notification = document.getElementById("notification");
 
 let latitude = "";
 let longitude = "";
 
+// --------------------
+// Notification
+// --------------------
+
+function showNotification(message, type) {
+
+    notification.textContent = message;
+    notification.className = type;
+
+    setTimeout(() => {
+        notification.className = "";
+    }, 2500);
+
+}
+
+// --------------------
+// Location Status
+// --------------------
+
+function updateLocationStatus(message, color) {
+
+    locationStatus.textContent = message;
+    locationStatus.style.color = color;
+
+}
+
+// Initial Status
+updateLocationStatus("📍 Location Required", "red");
+
+// --------------------
 // Get Location
+// --------------------
+
 locationBtn.addEventListener("click", () => {
 
     if (!navigator.geolocation) {
-        locationStatus.innerHTML = "❌ Geolocation is not supported.";
+
+        updateLocationStatus(
+            "❌ Geolocation is not supported.",
+            "red"
+        );
+
         return;
+
     }
 
-    locationStatus.innerHTML = "📍 Getting location...";
+    updateLocationStatus(
+        "📍 Getting location...",
+        "#2563eb"
+    );
 
     navigator.geolocation.getCurrentPosition(
 
@@ -22,14 +65,19 @@ locationBtn.addEventListener("click", () => {
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
 
-            locationStatus.innerHTML = "✅ Location Captured Successfully";
+            updateLocationStatus(
+                "✅ Location Captured",
+                "green"
+            );
 
         },
 
         () => {
 
-            locationStatus.innerHTML =
-            "❌ Location permission is required.";
+            updateLocationStatus(
+                "❌ Location permission is required.",
+                "red"
+            );
 
         }
 
@@ -37,21 +85,27 @@ locationBtn.addEventListener("click", () => {
 
 });
 
-
+// --------------------
 // Submit Form
+// --------------------
+
 leadForm.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
     if (latitude === "" || longitude === "") {
-        alert("Please capture your location first.");
+
+        showNotification(
+            "Please capture your location first.",
+            "error"
+        );
+
         return;
+
     }
 
-    const submitBtn = document.getElementById("submitBtn");
-
     submitBtn.disabled = true;
-    submitBtn.innerHTML = "Saving...";
+    submitBtn.innerHTML = "⏳ Saving...";
 
     const formData = new FormData();
 
@@ -69,22 +123,33 @@ leadForm.addEventListener("submit", async (e) => {
             body: formData
         });
 
-        alert("✅ Client Saved Successfully!");
+        showNotification(
+            "✅ Client Saved Successfully!",
+            "success"
+        );
 
         leadForm.reset();
 
         latitude = "";
         longitude = "";
 
-        locationStatus.innerHTML = "Location not captured";
+        updateLocationStatus(
+            "📍 Location Required",
+            "red"
+        );
+
+        document.getElementById("shopName").focus();
 
     }
 
     catch (error) {
 
-        alert("❌ Failed to save data.");
-
         console.log(error);
+
+        showNotification(
+            "❌ Failed to save data.",
+            "error"
+        );
 
     }
 
