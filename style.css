@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #f4f6f9;
+    background: linear-gradient(135deg, #eef4ff, #f8fbff);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,52 +16,67 @@ body {
 
 .container {
     width: 100%;
-    max-width: 450px;
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.1);
+    max-width: 460px;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 12px 35px rgba(37, 99, 235, 0.12);
+    border: 1px solid #e5e7eb;
 }
 
 h1 {
     text-align: center;
+    color: #1f2937;
     margin-bottom: 8px;
-    color: #222;
+    font-size: 30px;
 }
 
 .subtitle {
     text-align: center;
-    color: gray;
-    margin-bottom: 25px;
+    color: #6b7280;
+    margin-bottom: 28px;
+    font-size: 15px;
 }
 
 label {
     display: block;
-    margin-bottom: 8px;
-    margin-top: 18px;
-    font-weight: bold;
+    margin: 18px 0 8px;
+    font-weight: 600;
+    color: #374151;
 }
 
 input {
     width: 100%;
     padding: 14px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
     font-size: 16px;
+    transition: all 0.25s ease;
 }
 
 input:focus {
     outline: none;
     border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
 }
 
 button {
     width: 100%;
     padding: 15px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: scale(0.98);
 }
 
 #locationBtn {
@@ -78,16 +93,47 @@ button {
     margin-top: 25px;
     background: #2563eb;
     color: white;
-    font-weight: bold;
 }
 
 #submitBtn:hover {
     background: #1d4ed8;
 }
 
+#submitBtn:disabled {
+    background: #93c5fd;
+    cursor: not-allowed;
+    transform: none;
+}
+
 #locationStatus {
-    margin-top: 10px;
+    margin-top: 12px;
     text-align: center;
-    color: red;
     font-size: 14px;
+    font-weight: 600;
+    color: #dc2626;
+}
+
+/* Notification Area */
+
+#notification {
+    display: none;
+    margin-bottom: 20px;
+    padding: 14px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#notification.success {
+    display: block;
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #86efac;
+}
+
+#notification.error {
+    display: block;
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fca5a5;
 }
