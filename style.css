@@ -137,3 +137,45 @@ button:active {
     color: #b91c1c;
     border: 1px solid #fca5a5;
 }
+
+/* ---------- Terms Card ---------- */
+
+.terms-card{
+    margin-top:25px;
+    margin-bottom:20px;
+    padding:16px;
+    background:#f8fafc;
+    border:1px solid #dbeafe;
+    border-radius:12px;
+}
+
+.checkbox-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.checkbox-row input[type="checkbox"]{
+    width:20px;
+    height:20px;
+    margin:0;
+    flex-shrink:0;
+    accent-color:#2563eb;
+    cursor:pointer;
+}
+
+.terms-box{
+    margin:25px 0;
+}
+
+.terms-box h3{
+    color:#2563eb;
+    margin-top:20px;
+    margin-bottom:8px;
+}
+
+.terms-box p{
+    color:#555;
+    line-height:1.8;
+    text-align:justify;
+}
